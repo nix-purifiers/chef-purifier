@@ -1,0 +1,22 @@
+{
+  "chef-cli": {
+    "version": "6.1.34",
+    "sha256": "b620f5f4435396232472a57a807053e4a116ee1677ed7dd6e279b9f3b250522a"
+  },
+  "chef": {
+    "version": "19.3.14",
+    "sha256": "56609dfef2f7f9ef2d44f141437086cd8810f2ef39c81d44c3d19e1ca90ac03e"
+  },
+  "chef-config": {
+    "version": "19.3.14",
+    "sha256": "e9182e3432910173a1d447cda16a483a6391fd06ca63dcf27e4f1c58643d349b"
+  },
+  "chef-utils": {
+    "version": "19.3.14",
+    "sha256": "1e1fcdfe0ac6d319c5d1242c8cfbf5d844248962ae32744db07994d84b98cbe2"
+  },
+  "chef-bin": {
+    "version": "19.3.14",
+    "sha256": "630721c271a9eda908625a398e31c75ff005450f813a006a0e223ff2d1697fc3"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "revision_id": "8a53dd78a2663756d3a9c585dbf9ce6dcdb6aecb60dff6b6305f40edd27692e5",
+  "name": "purifier-proof",
+  "run_list": [
+    "recipe[purifier-fixture::default]"
+  ],
+  "included_policy_locks": [
+
+  ],
+  "cookbook_locks": {
+    "line": {
+      "version": "5.0.1",
+      "identifier": "9594091a5133019461af991f63052be19bc57c63",
+      "dotted_decimal_identifier": "42102538347033345.41765703369319173.48247981046883",
+      "cache_key": "line-5.0.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/line/versions/5.0.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/line/versions/5.0.1/download",
+        "version": "5.0.1"
+      }
+    },
+    "purifier-fixture": {
+      "version": "0.1.0",
+      "identifier": "ee07f09b8f3974530e2cb6b8063acdd556d8a540",
+      "dotted_decimal_identifier": "66999774440536436.23378008273847866.226316168766784",
+      "source": "cookbooks/purifier-fixture",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": null,
+        "working_tree_clean": true,
+        "published": false,
+        "synchronized_remote_branches": [
+
+        ]
+      },
+      "source_options": {
+        "path": "cookbooks/purifier-fixture"
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "line",
+        "= 5.0.1"
+      ],
+      [
+        "purifier-fixture",
+        ">= 0.0.0"
+      ]
+    ],
+    "dependencies": {
+      "line (5.0.1)": [
+
+      ],
+      "purifier-fixture (0.1.0)": [
+        [
+          "line",
+          ">= 0.0.0"
+        ]
+      ]
+    }
+  }
+}

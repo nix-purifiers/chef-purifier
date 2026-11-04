@@ -1,0 +1,9 @@
+source "https://rubygems.org"
+source "https://rubygems.cinc.sh" do
+  gem "chef-cli", "=6.1.34"
+  gem "chef-bin", "=19.3.14"
+  gem "chef", "=19.3.14"
+  gem "chef-config", "=19.3.14"
+  gem "chef-utils", "=19.3.14"
+end
+gem "syslog", "~> 0.4.0"

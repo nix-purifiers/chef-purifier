@@ -1,0 +1,49 @@
+{
+  "entries": [
+    {
+      "hash": "sha256-3c16TkU5JD81fWlByHszX732kEuLOwuSIGKoHq7RKPQ=",
+      "mirrors": [],
+      "path": "line-5.0.1-supermarket.chef.io.tar.gz",
+      "url": "https://supermarket.chef.io:443/api/v1/cookbooks/line/versions/5.0.1/download"
+    }
+  ],
+  "remotes": {
+    "line": {
+      "cache_key": "line-5.0.1-supermarket.chef.io",
+      "dotted_decimal_identifier": "42102538347033345.41765703369319173.48247981046883",
+      "identifier": "9594091a5133019461af991f63052be19bc57c63",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/line/versions/5.0.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/line/versions/5.0.1/download",
+        "version": "5.0.1"
+      },
+      "version": "5.0.1"
+    }
+  },
+  "schema": 1,
+  "sdkVersion": "758635301fb7143a12447aa34d475ef509bc58c48888a3207c386e1dd3a26539",
+  "selection": {
+    "localCookbooks": {
+      "purifier-fixture": {
+        "dependencies": {
+          "line": ">= 0.0.0"
+        },
+        "path": "cookbooks/purifier-fixture"
+      }
+    },
+    "sources": [
+      {
+        "preferred": [],
+        "uri": "https://supermarket.chef.io"
+      }
+    ],
+    "specifications": {
+      "purifier-fixture": {
+        "constraint": ">= 0.0.0",
+        "options": {
+          "path": "cookbooks/purifier-fixture"
+        }
+      }
+    }
+  }
+}
