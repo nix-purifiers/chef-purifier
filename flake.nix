@@ -59,7 +59,7 @@
             doCheck = true;
             checkCommand = ''
               export PURIFIER_PROOF_OUTPUT="$TMPDIR/answer"
-              cinc-client --local-mode --node-name purifier-proof --config .cinc/config.rb
+              cinc-client --local-mode --minimal-ohai --node-name purifier-proof --config .cinc/config.rb
               test "$(cat "$PURIFIER_PROOF_OUTPUT")" = answer=42
             '';
           };

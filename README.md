@@ -26,7 +26,9 @@ versions. Use `chef-purifier lock --update` to change dependencies, and
 `chef-purifier prefetch` to realize the current lock.
 
 `chef-purifier --project PATH exec -- COMMAND ...` runs a Cinc CLI command in a
-selected project. The native wrappers preserve the caller's working directory.
+selected project. The native wrappers preserve the caller's working directory. Set
+`CHEF_PURIFIER_PROJECT` and `CHEF_PURIFIER_LOCK` to select their project and an
+external companion lock explicitly.
 
 ## Supported dependencies
 

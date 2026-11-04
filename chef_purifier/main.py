@@ -19,7 +19,11 @@ def main():
     publish_tag = None
     if name in {"chef-cli", "cinc-cli"}:
         arguments = sys.argv[1:]
-        lockfile = project / "chef-purifier.lock.json"
+        lockfile = (
+            Path(os.environ["CHEF_PURIFIER_LOCK"]).resolve()
+            if os.environ.get("CHEF_PURIFIER_LOCK")
+            else project / "chef-purifier.lock.json"
+        )
         if not lockfile.exists():
             print(
                 "warning: no chef-purifier lockfile; using ordinary impure cookbook resolution",
@@ -42,7 +46,13 @@ def main():
         publish.add_argument("--tag", required=True)
         execute = commands.add_parser("exec")
         execute.add_argument("arguments", nargs=argparse.REMAINDER)
-        parser.add_argument("--lock", type=Path)
+        parser.add_argument(
+            "--lock",
+            type=Path,
+            default=Path(os.environ["CHEF_PURIFIER_LOCK"])
+            if os.environ.get("CHEF_PURIFIER_LOCK")
+            else None,
+        )
         for command in commands.choices.values():
             command.add_argument("--project", type=Path, default=argparse.SUPPRESS)
             command.add_argument("--lock", type=Path, default=argparse.SUPPRESS)

@@ -121,6 +121,7 @@ end
                 [
                     str(core / "bin/cinc-client"),
                     "--local-mode",
+                    "--minimal-ohai",
                     "--node-name",
                     "purifier-proof",
                     "--config",
@@ -148,6 +149,7 @@ end
         [
             str(core / "bin/cinc-client"),
             "--local-mode",
+            "--minimal-ohai",
             "--node-name",
             "purifier-proof",
             "--config",
@@ -197,6 +199,16 @@ end
             str(external),
         ]
     )
+    result = subprocess.run(
+        [str(cli / "bin/cinc-cli"), "export", str(temporary / "external-export")],
+        cwd=project,
+        env=environment
+        | {"CHEF_PURIFIER_PROJECT": str(project), "CHEF_PURIFIER_LOCK": str(external)},
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
     (project / "chef-purifier.lock.json").write_bytes(external.read_bytes())
     print(
         "native exported-policy consumer, exact publication asset and external lock: PASS"
