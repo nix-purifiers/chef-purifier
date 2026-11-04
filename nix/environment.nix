@@ -16,6 +16,17 @@
   fetchers ? { },
 }:
 let
+  source = lib.cleanSourceWith {
+    inherit src;
+    filter =
+      path: type:
+      !(builtins.elem (baseNameOf path) [
+        ".git"
+        ".chef-purifier"
+        "__pycache__"
+        "result"
+      ]);
+  };
   checked = purifier.checkLock lock;
   archives = purifier.tree (
     {
@@ -60,7 +71,7 @@ runCommand "chef-native-cookbooks" { nativeBuildInputs = [ git ]; } ''
   export CHEF_PURIFIER_ARCHIVES=${replay}
   export CHEF_PURIFIER_CACHE="$TMPDIR/cache" CHEF_PURIFIER_STORE="$out"
   mkdir -p "$HOME" "$out"
-  cp -r ${src} source
+  cp -r ${source} source
   chmod -R u+w source
   cd source
   CHEF_PURIFIER_MODE=verify-project CHEF_PURIFIER_PROJECT="$PWD" CHEF_PURIFIER_MANIFEST=${manifest} ${driver}/bin/cinc-cli

@@ -17,6 +17,17 @@
   checkCommand ? "",
 }:
 let
+  source = lib.cleanSourceWith {
+    inherit src;
+    filter =
+      path: type:
+      !(builtins.elem (baseNameOf path) [
+        ".git"
+        ".chef-purifier"
+        "__pycache__"
+        "result"
+      ]);
+  };
   lock = readLock { inherit src lockFile; };
   dependencies = environment { inherit src lock fetchers; };
   project =
@@ -32,7 +43,7 @@ let
         export CHEF_PURIFIER_DEPENDENCIES=${dependencies}
         export CHEF_PURIFIER_STORE="$TMPDIR/cookbooks" CHEF_PURIFIER_CACHE="$TMPDIR/cache"
         mkdir -p "$HOME"
-        cp -r ${src} source
+        cp -r ${source} source
         chmod -R u+w source
         cd source
         git init -q -b main
