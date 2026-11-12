@@ -2,7 +2,7 @@
 let
   p = pkgs;
   base = import (nixpkgsSrc + "/pkgs/by-name/ch/chef-cli/gemset.nix");
-  pins = builtins.fromJSON (builtins.readFile ../native/sdk-source/cinc-pins.json);
+  pins = builtins.fromJSON (builtins.readFile ../../native/sdk-source/cinc-pins.json);
   gemset =
     base
     // p.lib.mapAttrs (
@@ -25,7 +25,7 @@ let
 in
 p.bundlerApp {
   pname = "chef-cli";
-  gemdir = ../native/sdk-source;
+  gemdir = ../../native/sdk-source;
   inherit gemset;
   exes = [
     "cinc-cli"
