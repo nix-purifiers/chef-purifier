@@ -16,17 +16,18 @@
 }:
 let
   source = lib.fileset.toSource {
-    root = ../.;
+    root = ../..;
     fileset = lib.fileset.unions [
-      ./.
-      ../native
+      ../.
+      ../../lib-overlays
+      ../../native
     ];
   };
   realize = writeText "chef-purifier-realize.nix" ''
     { projectPath, lockPath ? "", target ? "environment" }:
     let
       pkgs = import (builtins.storePath "${nixpkgsSrc}") {};
-      scope = import ${source}/nix/scope.nix {
+      scope = import ${source}/pkgs/default.nix {
         inherit pkgs;
         nixpkgsSrc = builtins.storePath "${nixpkgsSrc}";
         purifierSrc = builtins.storePath "${purifierSrc}";
@@ -46,7 +47,7 @@ let
 in
 runCommand "chef-purifier" { nativeBuildInputs = [ makeWrapper ]; } ''
   mkdir -p "$out/bin" "$out/lib/chef_purifier"
-  cp ${../chef_purifier}/*.py "$out/lib/chef_purifier/"
+  cp ${../../chef_purifier}/*.py "$out/lib/chef_purifier/"
   ln -s ${core}/bin/cinc-client "$out/bin/cinc-client"
   for name in chef-purifier cinc-cli chef-cli; do
     makeWrapper ${python3}/bin/python3 "$out/bin/$name" \

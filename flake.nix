@@ -18,7 +18,7 @@
       ];
       forAll = nixpkgs.lib.genAttrs systems;
       overlay = final: prev: {
-        chef-purifier = import ./nix/scope.nix {
+        chef-purifier = import ./pkgs/default.nix {
           pkgs = final;
           nixpkgsSrc = nixpkgs;
           purifierSrc = purifier;
@@ -49,7 +49,7 @@
           program = "${self.packages.${system}.default}/bin/chef-purifier";
         };
       });
-      lib.chef-purifier.readLock = import ./nix/read-lock.nix { lib = nixpkgs.lib; };
+      lib.chef-purifier = (nixpkgs.lib.extend (import ./lib-overlays/default)).chef-purifier;
       checks = forAll (
         system:
         let
