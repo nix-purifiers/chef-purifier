@@ -21,7 +21,7 @@
     }
   },
   "schema": 1,
-  "sdkVersion": "758635301fb7143a12447aa34d475ef509bc58c48888a3207c386e1dd3a26539",
+  "sdkVersion": "451256cd9464a7f28896ba7e8b261e0820a4129486107799b966941da5808a71",
   "selection": {
     "localCookbooks": {
       "purifier-fixture": {
